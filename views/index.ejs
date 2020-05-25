@@ -5,33 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="blue">
     <title>FrontEnd Mentor | API REST</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,600;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
-    <header>
-
-    </header>
-
-    <div class="container">
-        <form id="form">
-            <input type="text" name="country" placeholder="Search country" />
-        </form>
-        <div class="select">
-            <select id="">
-                <option value="Africa">Africa</option>
-                <option value="America">America</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="Oceania">Oceania</option>
-            </select>
+    <header class="header-site">
+        <div class="title-header">
+            <h2>Where in the world?</h2>
         </div>
-    </div>
+        <div class="dark-mode-container">
+            <button class="dark-mode" id="dark-mode"><i class="material-icons">brightness_3</i> Dark Mode</button>
+        </div>
+    </header>
+    <form id="form" class="form-country">
+        <div class="container-search">
+            <div class="search" id="search">
+                <div class="icon">
+                    <i class="material-icons">search</i>
+                </div>
+                <div class="input">
+                    <input type="text" name="country" id="input" placeholder="Search country" />
+                </div>
+            </div>
+        </div>
+        <div class="select-container">
+            <div class="content">
+                <span id="btn-country">
+                    <p id="filter">Filter by region</p>
+                    <i class="material-icons">expand_more</i>
+                </span>
+                <ul class="select" id="select">
+                    <li data-id="Filter by region">filter by region</li>
+                    <li data-id="Africa">Africa</li>
+                    <li data-id="America">America</li>
+                    <li data-id="Asia">Asia</li>
+                    <li data-id="Europe">Europe</li>
+                    <li data-id="Oceania">Oceania</li>
+                </ul>
+            </div>
+            </div>
+    </form>
+
+    <section class="container">
+        <div class="card">
+            <div class="card-image">
+                <img class="responsive-img" src="https://restcountries.eu/data/nic.svg" alt="Imagen">
+            </div>
+            <div class="card-title">
+                <h2>Nicaragua</h2>
+            </div>
+            <div class="card-description">
+                <strong>Population: <p>6262703</p></strong>
+                <strong>Region: <p>Americas</p></strong>
+                <strong>Capital: <p>Managua</p></strong>
+            </div>
+        </div>
+        <!-- <img class="responsive-img" src="images/desktop-preview.jpg" alt="Imagen"> -->
+    </section>
+
+    <div class="overlay" id="overlay"></div>
     
     <!-- <ul>
         <% data.forEach((e) => { %>
             <li><%= e.name %></li>
         <%}) %>
     </ul> -->
+    <script src="js/index.js"></script>
 </body>
 </html>

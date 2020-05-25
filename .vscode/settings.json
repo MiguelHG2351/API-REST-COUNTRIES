@@ -1,3 +1,5 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.fontFamily": "Jetbrains Mono, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true
 }
