@@ -1,5 +1,5 @@
-const BASE_URL = fetch('https://restcountries.eu/rest/v2/all');
-const form = document.getElementById('form');
+const BASE_URL = 'https://restcountries.eu/rest/v2/';
+const $form = document.getElementById('form');
 const btn = document.getElementById('btn-country');
 const select = document.getElementById('select');
 const filter = document.getElementById('filter');
@@ -11,21 +11,27 @@ btn.addEventListener('click', () => {
     overlay.classList.toggle('active');
 })
 
-console.log(select.children[2].dataset.id)
-
 overlay.addEventListener('click', () => {
     overlay.classList.remove('active');
     select.classList.remove('active');
 })
 
+let click;
+
 for (let i = 0; i < option.length; i++) {
     option[i].addEventListener('click', () => {
-        filter.textContent = option[i].dataset.id
+        filter.textContent = option[i].dataset.id;
+        click = option[i].dataset.id
     })
 }
 
-form.addEventListener('submit', e => {
+$form.addEventListener('submit', e => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    alert(formData.get('country'));
+    fetch('/country', {
+        method: 'POST',
+        body: {formData, click}, 
+    })
 })
+
+// getData()
