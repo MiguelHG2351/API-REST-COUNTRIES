@@ -50,7 +50,7 @@ $form.addEventListener('submit', e => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget);
     formData.append('location', click);
-    console.log(formData.getAll('location'))
+    console.log(formData.get('location'))
     fetch('/country', {
         method: 'POST',
         body: formData,
