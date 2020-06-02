@@ -10,6 +10,7 @@ body {
   --width-container-mobile: 90%;
   --shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
   --width-span: 53%;
+  --height: 55px;
 }
 
 /*Animaciones o keyframes */
@@ -122,9 +123,7 @@ from {
 
   .search {
     width: var(--width-container-mobile);
-    height: 100%;
     display: grid;
-    /* padding: 0 22px; */
     grid-template-columns: 15% 1fr;
     -webkit-box-shadow: var(--shadow);
     -moz-box-shadow: var(--shadow);
@@ -250,12 +249,43 @@ from {
   
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width:1200px) {
+
+:root {
+  --width-span: 23%;
+}
   .container {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 90%;
+      margin: 0 auto;
+      max-width: 1280px;
+      position: relative;
+      z-index: 4;
+      width: 90%;
   }
+
+  .form-country {
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    /* grid-gap: 50px 0; */
+    justify-content: center;
+  }
+
+  .search {
+    height: var(--height);
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .content span {
+    width: calc(var(--width-span) - 32px);
+    margin: 0;
+  }
+
 }
 
 /* rem al body */

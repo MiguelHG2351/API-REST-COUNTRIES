@@ -4,11 +4,17 @@ const $form = document.getElementById('form');
 const btn = document.getElementById('btn-country');
 const select = document.getElementById('select');
 const filter = document.getElementById('filter');
+// const iconBotton = document.getElementById('icon-expand')
 const option = select.children
 const overlay = document.getElementById('overlay');
 
 btn.addEventListener('click', () => {
     select.classList.toggle('active');
+    if(btn.children[1].textContent == 'expand_more') {
+        btn.children[1].textContent = 'expand_less';
+    } else {
+        btn.children[1].textContent = 'expand_more'
+    }
     overlay.classList.toggle('active');
 })
 
@@ -51,10 +57,6 @@ $form.addEventListener('submit', e => {
     const formData = new FormData(e.currentTarget);
     formData.append('location', click);
     console.log(formData.get('location'))
-    fetch('/country', {
-        method: 'POST',
-        body: formData,
-    })
 })
 
 // getData()

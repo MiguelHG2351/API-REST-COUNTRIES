@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="blue">
     <title>FrontEnd Mentor | API REST</title>
+    <link rel="icon" href="images/favicon-32x32.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,600;1,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
 </head>
 <body>
 
@@ -34,7 +35,7 @@
             <div class="content">
                 <span id="btn-country">
                     <p id="filter">Filter by region</p>
-                    <i class="material-icons">expand_more</i>
+                    <i class="material-icons" id="icon-expand">expand_more</i>
                 </span>
                 <ul class="select" id="select">
                     <button type="submit" data-id="Filter by region">filter by region</button>
@@ -62,11 +63,24 @@
                 <strong>Capital: <p>Managua</p></strong>
             </div>
         </div>
+        <div class="card">
+            <div class="card-image">
+                <img class="responsive-img" src="https://restcountries.eu/data/nic.svg" alt="Imagen">
+            </div>
+            <div class="card-title">
+                <h2>Nicaragua</h2>
+            </div>
+            <div class="card-description">
+                <strong>Population: <p>6262703</p></strong>
+                <strong>Region: <p>Americas</p></strong>
+                <strong>Capital: <p>Managua</p></strong>
+            </div>
+        </div>
         <!-- <img class="responsive-img" src="images/desktop-preview.jpg" alt="Imagen"> -->
     </section>
 
     <div class="overlay" id="overlay"></div>
     
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
 </body>
 </html>
