@@ -19,6 +19,8 @@ module.exports = {
               {
                 loader: 'file-loader',
               },
+            ]
+          },
           {
               test: /\.ejs$/,
               use: [
