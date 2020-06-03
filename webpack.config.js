@@ -9,17 +9,13 @@ module.exports = {
     output: {
         path: __dirname + '/build',
         filename: "index.bundle.js",
-        publicPath: "/",
+        publicPath: "/API-REST-COUNTRIES",
     },
       module: {
         rules: [
           {
             test: /\.(png|jpe?g|gif)$/i,
-            use: [
-              {
-                loader: 'file-loader',
-              },
-            ]
+            use: [ 'file-loader?name=src/image/[name].[ext]']
           },
           {
               test: /\.ejs$/,
