@@ -1,4 +1,23 @@
 import './css/index.css';
+import icono from './images/favicon-32x32.png'
+import { createStore } from 'redux'
+
+const initialState = {
+    countryList: []
+}
+
+function reducer(state, action) {
+    return state
+}
+
+
+const store = createStore(reducer, initialState);
+console.log(store.getState);
+
+// https://restcountries.eu/rest/v2/name/{name}
+
+// https://restcountries.eu/rest/v2/region/{region}
+
 // const BASE_URL = 'https://restcountries.eu/rest/v2/all';
 const $form = document.getElementById('form');
 const btn = document.getElementById('btn-country');
@@ -50,6 +69,11 @@ function renderTemplate(name, population, region, capital, image) {
             </div>
         </div>
     `
+}
+
+function renderFlags(country) {
+    const search = `${country}`
+    const BASE_URL = `https://restcountries.eu/rest/v2/region/${region}`
 }
 
 $form.addEventListener('submit', e => {

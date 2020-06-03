@@ -8,8 +8,8 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         path: __dirname + '/build',
-        filename: "bundle.js",
-        publicPath: "/API-REST-COUNTRIES/",
+        filename: "index.bundle.js",
+        publicPath: "/",
     },
       module: {
         rules: [
@@ -30,10 +30,11 @@ module.exports = {
             use: ['style-loader', 'css-loader'],
           },
           {
-           test: /\.(png|svg|jpg|gif)$/,
-           use: [
-             'file-loader',
-           ],
+           test: /\.(png|svg|jpg|gif)$/i,
+            loader: 'url-loader',
+            options: {
+              publicPath: 'icono'
+            }
          },
         ],
       },
@@ -47,7 +48,7 @@ module.exports = {
     devServer: {
       contentBase:path.join(__dirname, 'build'),
       compress: true,
-      port: 8080
+      port: 5000
     }
 
 
