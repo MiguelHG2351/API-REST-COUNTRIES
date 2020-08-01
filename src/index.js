@@ -1,18 +1,7 @@
+"use strict"
+
 import './css/index.css';
 // import icono from './images/favicon-32x32.png'
-import { createStore } from 'redux'
-
-const initialState = {
-    countryList: []
-}
-
-function reducer(state, action) {
-    return state
-}
-
-
-const store = createStore(reducer, initialState);
-console.log(store.getState);
 
 // https://restcountries.eu/rest/v2/name/{name}
 
@@ -27,6 +16,7 @@ const filter = document.getElementById('filter');
 const option = select.children
 const overlay = document.getElementById('overlay');
 const container = document.getElementById('container')
+const input = document.getElementById('input')
 
 btn.addEventListener('click', () => {
     select.classList.toggle('active');
@@ -76,11 +66,23 @@ function renderTemplate(name, population, region, capital, image) {
 }
 
 async function getData(category, country) {
+    console.log(country)
+    if(country === 'all') {
+        category = 'all'
+        country = ''
+    }
     const search = `${country}`
     // const BASE_URL = await `https://restcountries.eu/rest/v2/
-    const response = await fetch(`https://restcountries.eu/rest/v2/${category}/${search}`);
-    const data = await response.json()
-    return data;
+        const response = await fetch(`https://restcountries.eu/rest/v2/${category}/${search}`);
+        const data = await response.json()
+        if (data.status == 404) {
+            alert('no existe, no lo hay xd')
+            const response = await fetch(`https://restcountries.eu/rest/v2/all`);
+            const data = await response.json()
+            return data
+        } else {
+            return data
+        }
 }
 
 function createTemplate(htmlString) {
@@ -93,27 +95,33 @@ function renderListFlags(data) {
     container.innerHTML = ''
     for (const key in data) {
             const {name, region, population, flag, capital} = data[key];
-            // console.log(name);
-            // console.log(region);
-            // console.log(capital);
             const HTMLString = renderTemplate(name, population, region, capital, flag);
             const html = createTemplate(HTMLString)
-            // console.log(html)
             container.append(html)
     }
 }
 
 
+input.addEventListener('input', async (e) => {
+    let data = await getData("name", e.currentTarget.value);
+    renderListFlags(data)
+})
+
 $form.addEventListener('submit', async e => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget);
-    if(click.name === 'all') {
-        click.type = 'all'
-        click.name = ''
-    }
+    
+    input.value = ''
     formData.append('location', `${click.name}`);
-    const data = await getData(click.type, formData.get('location'));
-    renderListFlags(data)
+    console.log(formData.get('location').length)
+    console.log(formData.get('country').length)
+    if (formData.get('location').length > 0 && formData.get('country').length == 0) {
+        const data = await getData(click.type, formData.get('location'));
+        renderListFlags(data)
+    } else {
+        const data = await getData('name', formData.get('country'));
+        renderListFlags(data)
+    }
 })
 
 // getData()
