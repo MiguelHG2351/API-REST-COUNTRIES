@@ -73,11 +73,11 @@ async function getData(category, country) {
     }
     const search = `${country}`
     // const BASE_URL = await `https://restcountries.eu/rest/v2/
-        const response = await fetch(`https://restcountries.eu/rest/v2/${category}/${search}`);
+        const response = await fetch(`https://restcountries.com/v3.1/${category}/${search}`);
         const data = await response.json()
         if (data.status == 404) {
             alert('no existe, no lo hay xd')
-            const response = await fetch(`https://restcountries.eu/rest/v2/all`);
+            const response = await fetch(`https://restcountries.com/v3.1/all`);
             const data = await response.json()
             return data
         } else {
@@ -94,8 +94,8 @@ function createTemplate(htmlString) {
 function renderListFlags(data) {
     container.innerHTML = ''
     for (const key in data) {
-            const {name, region, population, flag, capital} = data[key];
-            const HTMLString = renderTemplate(name, population, region, capital, flag);
+            const {name, region, population, flags, capital} = data[key];
+            const HTMLString = renderTemplate(name.common, population, region, capital, flags.svg);
             const html = createTemplate(HTMLString)
             container.append(html)
     }
@@ -119,7 +119,7 @@ $form.addEventListener('submit', async e => {
         const data = await getData(click.type, formData.get('location'));
         renderListFlags(data)
     } else {
-        const data = await getData('name', formData.get('country'));
+        const data = await getData('name', formData.get('country').toLowerCase());
         renderListFlags(data)
     }
 })
