@@ -36,7 +36,7 @@ module.exports = {
         }),
         new CopyPlugin({
           patterns: [
-            { from: "./src/public/images", to: "./" },
+            { from: "./src/public/images", to: "./images" },
           ],
           options: {
             concurrency: 100,
