@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: __dirname + '/build',
         filename: "index.bundle.js",
-        publicPath: "/API-REST-COUNTRIES",
+        publicPath: "/",
     },
       module: {
         rules: [
@@ -36,7 +36,12 @@ module.exports = {
           },
         }),
     ],
-    mode: 'production'
+
+    devServer: {
+      compress: true,
+      port: 5000
+    },
+    mode: 'development'
 }
 
 //module.exports = config;

@@ -1,6 +1,6 @@
 "use strict"
 
-import './css/index.css';
+import './public/css/index.css';
 // import icono from './images/favicon-32x32.png'
 
 // https://restcountries.eu/rest/v2/name/{name}
@@ -103,8 +103,10 @@ function renderListFlags(data) {
 
 
 input.addEventListener('input', async (e) => {
-    let data = await getData("name", e.currentTarget.value);
-    renderListFlags(data)
+    if(e.currentTarget.value.length > 0) {
+        let data = await getData("name", e.currentTarget.value);
+        renderListFlags(data)
+    }
 })
 
 $form.addEventListener('submit', async e => {
