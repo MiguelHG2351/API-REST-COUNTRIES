@@ -2,34 +2,41 @@
 //import css from "css-loader"
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin");
-const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     
-    entry: "./src/index.js",
+    entry: {
+      main: {
+        import: './src/index.js',
+      }
+    },
     output: {
         path: __dirname + '/build',
-        filename: "index.bundle.js",
-        publicPath: "/API-REST-COUNTRIES",
+        filename: "[name].js",
+        publicPath: '/API-REST-COUNTRIES',
     },
       module: {
         rules: [
           {
             test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
+            use: [MiniCssExtractPlugin.loader, 'css-loader'],
           },
         ],
       },
 
       plugins: [
+        new MiniCssExtractPlugin(),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
-            publicPath: '/'
+            publicPath: '/API-REST-COUNTRIES'
         }),
         new CopyPlugin({
           patterns: [
-            { from: "./src/public", to: "./build" },
+            { from: "./src/public/images", to: "./" },
           ],
           options: {
             concurrency: 100,

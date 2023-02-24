@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: __dirname + '/build',
         filename: "index.bundle.js",
-        publicPath: "/",
+        publicPath: "/API-REST-COUNTRIES",
     },
       module: {
         rules: [
@@ -25,11 +25,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
-            publicPath: '/'
+            publicPath: '/API-REST-COUNTRIES',
+
         }),
         new CopyPlugin({
           patterns: [
-            { from: "./src/public", to: "./build" },
+            { from: "./src/public/images", to: "./build" },
           ],
           options: {
             concurrency: 100,
