@@ -2,7 +2,7 @@
 
 Demo -> https://miguelhg2351.github.io/API-REST-COUNTRIES/
 
-![Diseño del sitio](./src/images/desktop-preview.jpg)
+![Diseño del sitio](./src/public/images/desktop-preview.jpg)
 
 ## Welcome! 👋
 
